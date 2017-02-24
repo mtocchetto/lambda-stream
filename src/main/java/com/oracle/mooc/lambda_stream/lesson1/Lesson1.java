@@ -91,6 +91,7 @@ public class Lesson1 {
 
         /* YOUR CODE HERE */
         list.replaceAll(s -> s.toUpperCase());
+        list.forEach(System.out::println);
     }
 
     /**
@@ -106,10 +107,11 @@ public class Lesson1 {
         map.put("a", 1);
 
         /* YOUR CODE HERE */
-        map.entrySet()
-        .stream()
-        .map(e -> e.getKey() + e.getValue())
-        .collect(Collectors.joining());
+        String result = map.entrySet()
+            .stream()
+            .map(e -> e.getKey() + e.getValue())
+            .collect(Collectors.joining());
+        System.out.println(result);
     }
 
     /**
@@ -121,6 +123,6 @@ public class Lesson1 {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
         /* YOUR CODE HERE */
-        list.stream().peek(System.out::println);
+        new Thread(() -> list.forEach(System.out::println)).start();
     }
 }
